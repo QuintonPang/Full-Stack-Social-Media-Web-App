@@ -15,7 +15,7 @@ const App = () => {
     const [authState, setAuthState] = useState({username:"",id:"",status:false}) // save user that is logged in
     useEffect(()=>{
         if(localStorage.getItem('accessToken')) {
-            axios.get(process.env.REACT_APP_DOMAIN+'/users/auth',{headers:{accessToken:localStorage.getItem('accessToken')}})
+            axios.get(process.env.REACT_APP_BACKEND_DOMAIN+'/users/auth',{headers:{accessToken:localStorage.getItem('accessToken')}})
             .then((res)=>res.data.id?setAuthState({...res.data,status:true}):setAuthState({...authState,status:false})); // prevent fake token
         }
     },[])

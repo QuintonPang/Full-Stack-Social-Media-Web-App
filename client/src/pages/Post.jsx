@@ -16,12 +16,12 @@ const Post = () => {
     },[id])
 
     const fetchPosts = () =>{
-      axios.get(`${process.env.REACT_APP_DOMAIN}/posts/byPost/${id}`)
+      axios.get(`${process.env.REACT_APP_BACKEND_DOMAIN}/posts/byPost/${id}`)
         .then(res=>setPost(res.data))
     }
 
     const fetchComments =  () =>{   
-      axios.get(`${process.env.REACT_APP_DOMAIN}/comments/${id}`)
+      axios.get(`${process.env.REACT_APP_BACKEND_DOMAIN}/comments/${id}`)
       .then(res=>setComments(res.data))
       // alert('done')
     }

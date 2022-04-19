@@ -11,7 +11,7 @@ const CreatePost = () => {
 
     useEffect(()=>{
         if(localStorage.getItem('accessToken')) {
-            axios.get(process.env.REACT_APP_DOMAIN+'/users/auth',{headers:{accessToken:localStorage.getItem('accessToken')}})
+            axios.get(process.env.REACT_APP_BACKEND_DOMAIN+'/users/auth',{headers:{accessToken:localStorage.getItem('accessToken')}})
             .then((res)=>{!res.data.id&&navigate('/login')})
         }else{
             navigate('/login')
@@ -28,7 +28,7 @@ const CreatePost = () => {
 
     const onSubmit = (data) =>{
         // console.log(data)
-        axios.post(process.env.REACT_APP_DOMAIN+"/posts",{...data,username:authState.username,UserId:authState.id})
+        axios.post(process.env.REACT_APP_BACKEND_DOMAIN+"/posts",{...data,username:authState.username,UserId:authState.id})
         .then((res)=>{console.log("STATUS: " + res.status); navigate(`/`)})
     }
 

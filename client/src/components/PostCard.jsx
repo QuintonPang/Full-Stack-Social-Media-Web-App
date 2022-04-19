@@ -29,7 +29,7 @@ const PostCard = ({post,fetchPosts}) => {
   const [liked, setLiked] = useState(false)
 
   useEffect(()=>{
-    axios.get(`${process.env.REACT_APP_DOMAIN}/likes/${post?.id}`,
+    axios.get(`${process.env.REACT_APP_BACKEND_DOMAIN}/likes/${post?.id}`,
     {
       headers:{
         "accessToken":localStorage.getItem("accessToken"),
@@ -40,7 +40,7 @@ const PostCard = ({post,fetchPosts}) => {
   
 
   const handleLike=(postId)=>{
-    axios.post(`${process.env.REACT_APP_DOMAIN}/likes/`,
+    axios.post(`${process.env.BACKEND_}/likes/`,
     {
       PostId:postId,
       UserId: authState.id,
@@ -59,7 +59,7 @@ const PostCard = ({post,fetchPosts}) => {
   }
 
   const handleDelete = (id) =>{
-    axios.delete(`${process.env.REACT_APP_DOMAIN}/posts/${post.id}`,
+    axios.delete(`${process.env.BACKEND_}/posts/${post.id}`,
     {
       headers:{
         accessToken: localStorage.getItem('accessToken')
@@ -76,7 +76,7 @@ const PostCard = ({post,fetchPosts}) => {
     switch(option){
       case "title":
         const newTitle = prompt("Enter new title:")
-        axios.put(`${process.env.REACT_APP_DOMAIN}/posts/updateTitle/${post.id}`,
+        axios.put(`${process.env.BACKEND_}/posts/updateTitle/${post.id}`,
         {
           newTitle,
         },
@@ -88,7 +88,7 @@ const PostCard = ({post,fetchPosts}) => {
         break;
       case "postText":
         const newPostText = prompt("Enter new post text:")
-        axios.put(`${process.env.REACT_APP_DOMAIN}/posts/updatePostText/${post.id}`,
+        axios.put(`${process.env.BACKEND_}/posts/updatePostText/${post.id}`,
         {
           newPostText,
         },

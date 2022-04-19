@@ -15,7 +15,7 @@ const Registration = () => {
 
     const onSubmit = (data) =>{
         // console.log(data)
-        axios.post(process.env.REACT_APP_DOMAIN+"/users/registration",data)
+        axios.post(process.env.REACT_APP_BACKEND_DOMAIN+"/users/registration",data)
         .then((res)=>{console.log("STATUS: " + res.status); navigate(`/login`)})
     }
 

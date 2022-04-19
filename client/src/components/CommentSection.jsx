@@ -18,7 +18,7 @@ const CommentSection = ({comments,postId, fetchComments}) => {
   const { authState } = useContext(AuthContext)
 
     const handleDelete = (id) =>{
-      axios.delete(`${process.env.REACT_APP_DOMAIN}/comments/${id}`,{
+      axios.delete(`${process.env.REACT_APP_BACKEND_DOMAIN}/comments/${id}`,{
         headers:{accessToken:localStorage.getItem('accessToken')}
       })
       .then((res)=>{
@@ -32,7 +32,7 @@ const CommentSection = ({comments,postId, fetchComments}) => {
 
     const onSubmit = (data,{resetForm}) =>{
 
-        axios.post(process.env.REACT_APP_DOMAIN+'/comments/',
+        axios.post(process.env.REACT_APP_BACKEND_DOMAIN+'/comments/',
           {
               commentBody:data.comment,
               PostId: postId,

@@ -21,7 +21,7 @@ const ProfilePage = () => {
     const { authState } = useContext(AuthContext)
 
     useEffect(()=>{
-        axios.get(process.env.REACT_APP_DOMAIN+'/users/'+id)
+        axios.get(process.env.REACT_APP_BACKEND_DOMAIN+'/users/'+id)
         .then(res=>setUser(res.data))
     },[id])
 
@@ -31,7 +31,7 @@ const ProfilePage = () => {
 
     useEffect(()=>{
         if(localStorage.getItem('accessToken')) {
-            axios.get(process.env.REACT_APP_DOMAIN+'/users/auth',{headers:{accessToken:localStorage.getItem('accessToken')}})
+            axios.get(process.env.REACT_APP_BACKEND_DOMAIN+'/users/auth',{headers:{accessToken:localStorage.getItem('accessToken')}})
             .then((res)=>{!res.data.id&&navigate('/login')})
         }else{
             navigate('/login')
@@ -40,7 +40,7 @@ const ProfilePage = () => {
 
 
     const fetchPosts= () =>{
-        axios.get(process.env.REACT_APP_DOMAIN+'/posts/byUser/'+id)
+        axios.get(process.env.REACT_APP_BACKEND_DOMAIN+'/posts/byUser/'+id)
         .then(res=>setPosts(res?.data))
     }
   return (

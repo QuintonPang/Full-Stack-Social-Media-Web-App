@@ -10,14 +10,14 @@ const Home = () => {
     const [posts, setPosts] = useState([])
 
     const fetchPosts = () =>{
-        axios.get(process.env.REACT_APP_DOMAIN+'/posts')
+        axios.get(process.env.REACT_APP_BACKEND_DOMAIN+'/posts')
         .then((res)=>{
             setPosts(res.data)
         })
     }
     useEffect(()=>{
         if(localStorage.getItem('accessToken')) {
-            axios.get(process.env.REACT_APP_DOMAIN+'/users/auth',{headers:{accessToken:localStorage.getItem('accessToken')}})
+            axios.get(process.env.REACT_APP_BACKEND_DOMAIN+'/users/auth',{headers:{accessToken:localStorage.getItem('accessToken')}})
             .then((res)=>{!res.data.id&&navigate('/login')})
         }else{
             navigate('/login')

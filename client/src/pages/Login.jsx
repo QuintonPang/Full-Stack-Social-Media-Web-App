@@ -18,7 +18,7 @@ const Login = () => {
 
     const onSubmit = (data) =>{
         // console.log(data)
-        axios.post(process.env.REACT_APP_DOMAIN+"/users/login",data)
+        axios.post(process.env.REACT_APP_BACKEND_DOMAIN+"/users/login",data)
         .then((res)=>{
             if(res.data.error) alert(res.data.error)
             else {

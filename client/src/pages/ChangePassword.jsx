@@ -18,7 +18,7 @@ const ChangePassword = () => {
     }
 
     const onSubmit = (data) =>{
-        axios.put(`${process.env.REACT_APP_DOMAIN}/users/changePassword/${authState.id}`,
+        axios.put(`${process.env.REACT_APP_BACKEND_DOMAIN}/users/changePassword/${authState.id}`,
         {
             oldPassword:data.oldPassword,
             newPassword: data.newPassword1 || data.newPassword2,
